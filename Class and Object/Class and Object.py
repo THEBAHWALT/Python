@@ -240,3 +240,16 @@ fowl.name = 'Donald'
 print(fowl.name)
 # print(fowl.__name)  # AttributeError: 'Duck' object has no attribute '__name'
 print(fowl._Duck__name)
+
+# 類別與物件屬性
+class Fruit:
+    color = 'red'
+
+blueberry = Fruit()
+print(blueberry.color)
+blueberry.color = 'blue'
+print(blueberry.color)
+Fruit.color = 'orange'
+print(blueberry.color)
+orange = Fruit()
+print(orange.color)
