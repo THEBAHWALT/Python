@@ -173,3 +173,198 @@ vowels = 'aeiou'
 word = 'onomatopoeia'
 vowels_counts = {letter: word.count(letter) for letter in set(word) if letter in vowels}
 print(vowels_counts)
+
+# 用set()來建立
+empty_set = set()
+even_numbers = {0, 2, 4, 6, 8}
+odd_numbers = {1, 3, 5, 7, 9}
+
+# 用set()來轉換
+print(set('letters'))
+print(set(['Dasher', 'Dancer', 'Prancer', 'Mason-Dixon']))
+print(set(('Ummagumma', 'Echoes', 'Atom Heart Mother')))
+print(set({'apple': 'red', 'orange': 'orange', 'cherry': 'red'}))
+
+# 用len()來取得長度
+reindeer = set(['Dasher', 'Dancer', 'Prancer', 'Mason-Dixon'])
+print(len(reindeer))
+
+# 用add()來加入一個項目
+s = set((1,2,3))
+print(s)
+s.add(4)
+print(s)
+
+# 用remove()來刪除項目
+s = set((1,2,3))
+s.remove(3)
+print(s)
+
+# 用for in來迭代
+furniture = set(('sofa', 'ottoman', 'table'))
+for piece in furniture:
+    print(piece)
+
+# 用in來檢查是否存在
+drinks = {
+    'martini': {'vodka', 'vermouth'},
+    'black russian': {'vodka', 'kahlua'},
+    'white russian': {'cream', 'kahlua', 'vodka'},
+    'manhattan': {'rye', 'vermouth', 'bitters'},
+    'screwdriver': {'orange juice', 'vodka'},
+}
+for name, contents in drinks.items():
+    if 'vodka' in contents:
+        print(name)
+for name, contents in drinks.items():
+    if 'vodka' in contents and not ('vermouth' in contents or 'cream' in contents):
+        print(name)
+
+# 組合與運算子
+for name, contents in drinks.items():
+    if contents & {'vermouth', 'orange juice'}:
+        print(name)
+
+for name, contents in drinks.items():
+    if 'vodka' in contents and not contents & {'vermouth', 'cream'}:
+        print(name)
+bruss = drinks['black russian']
+wruss = drinks['white russian']
+print(bruss & wruss)
+a = {1, 2}
+b = {2, 3}
+print(a & b)
+print(a.intersection(b))
+print(a | b)
+print(a.union(b))
+print(bruss | wruss)
+print(a - b)
+print(a.difference(b))
+print(bruss - wruss)
+print(wruss - bruss)
+print(a ^ b)
+print(a.symmetric_difference(b))
+print(bruss ^ wruss)
+print(a <= b)
+print(a.issubset(b))
+print(bruss <= wruss)
+print(a <= a)
+print(a.issubset(a))
+print(a < b)
+print(a < a)
+print(a >= b)
+print(a.issuperset(b))
+print(wruss >= bruss)
+print(a >= a)
+print(a.issuperset(a))
+print(a > b)
+print(wruss > bruss)
+print(a > a)
+
+# 集合生成式
+# { expression for expression in iterable }
+# { expression for expression in iterable if condition }
+a_set = {number for number in range(1, 6) if number % 3 == 1}
+print(f'a_set = {a_set}')
+
+# 用frozenset()建立不可變集合
+print(frozenset([3, 2, 1]))
+print(frozenset(set([3, 2, 1])))
+print(frozenset({3, 2, 1}))
+print(frozenset((2, 3, 1)))
+
+fs = frozenset([3, 2, 1])
+print(f'fs = {fs}')
+# fs.add(4) print(f'fs = {fs}') # AttributeError: 'frozenset' object has no attribute 'add'
+
+# 截至目前為止的資料結構
+marx_list = ['Groucho', 'Chico', 'Harpo']
+marx_tuple = 'Groucho', 'Chico', 'Harpo'
+marx_dict = {'Groucho': 'banjo', 'Chico': 'piano', 'Harpo': 'harp'}
+marx_set = {'Groucho', 'Chico', 'Harpo'}
+print(f'marx_list[2] = {marx_list[2]}')
+print(f'marx_tuple[2] = {marx_tuple[2]}')
+print(f'marx_dict["Harpo"] = {marx_dict["Harpo"]}')
+print('Harpo' in marx_set)
+print('Harpo' in marx_dict)
+print('Harpo' in marx_tuple)
+print('Harpo' in marx_list)
+
+# 製造更大型的資料結構
+marxes = ['Groucho', 'Chico', 'Harpo']
+pythons = ['Chapman', 'Cleese', 'Gilliam', 'Jones', 'Palin']
+stooges = ['Moe', 'Curly', 'Larry']
+tuple_of_lists = marxes, pythons, stooges
+print(tuple_of_lists)
+list_of_lists = [marxes, pythons, stooges]
+print(list_of_lists)
+dict_of_lists = {'Marxes': marxes, 'Pythons': pythons, 'Stooges': stooges}
+print(dict_of_lists)
+houses = {
+    (44.79, -93.14, 285): 'My House',
+    (38.89, -77.03, 13): 'The White House',
+}
+print(houses)
+
+# 8.1
+e2f = {'dog':'chien', 'cat':'chat', 'walrus':'morse'}
+print(e2f)
+
+# 8.2
+print(e2f['walrus'])
+
+# 8.3
+f2e = {}
+for english, french in e2f.items():
+    f2e[french] = english
+print(f2e)
+
+# 8.4
+print(f2e['chien'])
+
+# 8.5
+print(set(e2f.keys()))
+
+# 8.6
+life = {
+    'animals': {
+        'cats': [
+            'Henri', 'Grumpy', 'Lucy'
+        ],
+        'octopi': {},
+        'emus': {},
+    },
+    'plants': {},
+    'other': {},
+}
+
+# 8.7
+print(life.keys())
+
+# 8.8
+print(life['animals'].keys())
+
+# 8.9
+print(life['animals']['cats'])
+
+# 8.10
+squares = {number: number * number for number in range(10)}
+print(squares)
+
+# 8.11
+odd = {number for number in range(10) if number % 2 == 1}
+print(odd)
+
+# 8.12
+for thing in ('Got %s' % number for number in range(10)):
+    print(thing)
+
+# 8.13
+keys = ('optimist', 'pessimist', 'troll')
+values = ('The glass is half full', 'The glass is half empty', 'How did you get a glass?')
+print(dict(zip(keys, values)))
+
+# 8.14
+titles = ['Creature of Habit', 'Crewel Fate']
+plots = ['A nun turns into a monster', 'A haunted yarn shop']
+print(dict(zip(titles, plots)))
